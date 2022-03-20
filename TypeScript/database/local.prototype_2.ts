@@ -36,10 +36,11 @@ class localdb {
   }
 
   async delete(id) {
-    let file = this.file;
-    let newf = file.filter(e => e !== id);
+    let file = require(`./database/${this.filename}`);
+    let fc = file;
+    delete fc[id];
 
-    fs.writeFileSync(`./database/${this.filename}`, JSON.stringify(newf, null, 2));
+    fs.writeFileSync(`./database/${this.filename}`, JSON.stringify(fc, null, 2));
   }
 }
 
