@@ -2,30 +2,37 @@ const fs = require('fs');
 
 class localdb {
   constructor(filename) {
-    this.file = require(`./database/${filename}.json`);
     this.filename = `${filename}.json`;
-    if(!fs.existsSync('./database')) {
+    if (!fs.existsSync('./database')) {
       fs.mkdirSync('./database');
     }
-    if(fs.existsSync(`./database/${filename}.json`)) return;
-    
+    if (fs.existsSync(`./database/${filename}.json`)) {
+      this.file = require(`./database/${this.filename}`);
+    } else {
+
       let empty = {
-        
+
       };
       fs.writeFileSync(`./database/${filename}.json`, JSON.stringify(empty, null, 2));
-    
+
+    }
   }
-  
+
   async get(id) {
     let file = require(`./database/${this.filename}`);
     return file[id];
   }
 
   async set(id, pr, vl) {
-    this.file[id] = {
+    let file = require(`./database/${this.filename}`);
+
+    file[id] = {
       [pr]: vl
     }
-    fs.writeFileSync(`./database/${this.filename}`, JSON.stringify(this.file, null, 2));
+    fs.writeFileSync(`./database/${this.filename}`, JSON.stringify(file, null, 2));
+
+
+    return file[id];
   }
 
   async delete(id) {
