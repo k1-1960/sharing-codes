@@ -49,8 +49,8 @@ class setup {
    .then(() => {
      this.success(user);
    })
-   .catch((error) => {
-    error(error);
+   .catch((err) => {
+    error(err);
    });
  }
 }
