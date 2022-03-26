@@ -55,19 +55,6 @@ class setup {
  }
 }
 
-class model {
-  constructor(model, modelname) {
-    this.model = model;
-    this.modelname = modelname;
-    if(!fs.existsSync(`${proyectpath}/MongoDB/models`)) {
-      existsDir();
-    }
-
-    if(!model) return error(newErr('Sin objeto \"modelo\"', `Debes crear un modelo, definirlo en una variable e introducirla en la función model como primer parametro.`));
-  }
-}
-
 module.exports = {
   setup: setup,
-  model: model,
 }
