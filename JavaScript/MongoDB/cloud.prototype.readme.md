@@ -1,4 +1,4 @@
-<h1 align="center">🌿 MongoDB más simple.</h1>
+<h2 align="center">🌿 Conexión a MongoDB más simple.</h2>
 <p align="center">Algo simple, más compacto.</p>
 
 <h3 align="center">Uso:</h3>
